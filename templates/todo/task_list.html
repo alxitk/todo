@@ -28,7 +28,7 @@
       {% endif %}
     </div>
     <div class="task-actions">
-      <a href="" class="btn btn-outline">✏ Edit</a>
+      <a href="{% url 'todo:task-update' task.id %}" class="btn btn-outline">✏ Edit</a>
       <a href="" class="btn btn-danger">🗑 Delete</a>
       {% if task.is_done %}
         <a href="" class="btn btn-success">Mark as Not Done</a>
