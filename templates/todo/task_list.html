@@ -29,7 +29,10 @@
     </div>
     <div class="task-actions">
       <a href="{% url 'todo:task-update' task.id %}" class="btn btn-outline">✏ Edit</a>
-      <a href="" class="btn btn-danger">🗑 Delete</a>
+      <form method="post" action="{% url 'todo:task-delete' task.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete Task</button>
+      </form>
       {% if task.is_done %}
         <a href="" class="btn btn-success">Mark as Not Done</a>
       {% else %}
