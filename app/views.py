@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic, View
 
@@ -31,7 +31,6 @@ class TaskDeleteView(generic.DeleteView):
     success_url = reverse_lazy("todo:task-list")
 
 
-
 class TaskToggleView(View):
     def get(self, request, pk):
         task = get_object_or_404(Task, pk=pk)
@@ -62,4 +61,3 @@ class TagUpdateView(generic.UpdateView):
 class TagDeleteView(generic.DeleteView):
     model = Tag
     success_url = reverse_lazy("todo:tags-list")
-

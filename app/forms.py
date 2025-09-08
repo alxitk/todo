@@ -1,5 +1,4 @@
 from django import forms
-from django.views import generic
 
 from app.models import Tag, Task
 

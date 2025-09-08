@@ -131,7 +131,7 @@ a {
 }
 
 .menu-toggle {
-  display: none; /* спрятана на больших экранах */
+  display: none;
 }
 
 /* Tasks */
