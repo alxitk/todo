@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Task Form{% endblock %}
+
+{% block content %}
+<div class="header">
+  <h1>{% if form.instance.pk %}Edit Task{% else %}Create Task{% endif %}</h1>
+  <div class="actions">
+    <button class="btn btn-outline" id="themeToggle">🌗</button>
+  </div>
+</div>
+
+<div class="form-card">
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="field">
+      <label for="id_content">Task description</label>
+      {{ form.content }}
+    </div>
+
+    <div class="field">
+      <label for="id_deadline">Deadline</label>
+      {{ form.deadline }}
+    </div>
+
+    <div class="field checkbox-field">
+      {{ form.is_done }}
+      <label for="id_is_done">Completed</label>
+    </div>
+
+    <div class="field">
+      <label for="id_tags">Tags</label>
+      {{ form.tags }}
+    </div>
+
+    {% if form.difficulty %}
+    <div class="field">
+      <label for="id_difficulty">Difficulty level</label>
+      {{ form.difficulty }}
+    </div>
+    {% endif %}
+
+    <div class="actions">
+      <a href="{% url 'todo:task-list' %}" class="btn btn-outline">Cancel</a>
+      <button type="submit" class="btn btn-primary">💾 Save</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
