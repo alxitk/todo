@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from app.forms import TaskForm
-from app.models import Task
+from app.forms import TaskForm, TagForm
+from app.models import Task, Tag
 
 
 class TasksListView(generic.ListView):
@@ -38,4 +38,26 @@ def task_toggle(request, pk):
     return redirect("todo:task-list")
 
 
+class TagListView(generic.ListView):
+    model = Tag
+    template_name = "todo/tag_list.html"
+
+
+class TagCreateView(generic.CreateView):
+    model = Tag
+    form_class = TagForm
+    template_name = "todo/tag_form.html"
+    success_url = reverse_lazy("todo:tags-list")
+
+
+class TagUpdateView(generic.UpdateView):
+    model = Tag
+    form_class = TagForm
+    template_name = "todo/tag_form.html"
+    success_url = reverse_lazy("todo:tags-list")
+
+
+class TagDeleteView(generic.DeleteView):
+    model = Tag
+    success_url = reverse_lazy("todo:tags-list")
 

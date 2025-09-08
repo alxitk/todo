@@ -1,4 +1,6 @@
 from django import forms
+from django.views import generic
+
 from app.models import Tag, Task
 
 
@@ -32,6 +34,20 @@ class TaskForm(forms.ModelForm):
             "is_done": forms.CheckboxInput(
                 attrs={
                     "class": "form-check-input",
+                }
+            ),
+        }
+
+
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = "__all__"
+        widgets = {
+            "name": forms.TextInput(
+                attrs={
+                    "placeholder": "Enter tag name...",
+                    "class": "form-control",
                 }
             ),
         }
