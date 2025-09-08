@@ -34,9 +34,9 @@
         <button type="submit" class="btn btn-danger">Delete Task</button>
       </form>
       {% if task.is_done %}
-        <a href="" class="btn btn-success">Mark as Not Done</a>
+        <a href="{% url 'todo:task_toggle' task.id %}" class="btn btn-success">Mark as Not Done</a>
       {% else %}
-        <a href="" class="btn btn-success">Mark as Done</a>
+        <a href="{% url 'todo:task_toggle' task.id %}" class="btn btn-success">Mark as Done</a>
       {% endif %}
     </div>
   </div>
