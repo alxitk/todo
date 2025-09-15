@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{% if form.instance.pk %}Edit Tag{% else %}Create Tag{% endif %}{% endblock %}
+
+{% block content %}
+<div class="header">
+  <h1>{% if form.instance.pk %}Edit Tag{% else %}Create Tag{% endif %}</h1>
+  <div class="actions">
+    <a href="{% url 'todo:tags-list' %}" class="btn btn-outline">← Back</a>
+    <button class="btn btn-outline menu-toggle" id="menuToggle">☰</button>
+    <button class="btn btn-outline" id="themeToggle">🌗</button>
+  </div>
+</div>
+
+<div class="form-card">
+  <form method="post">
+    {% csrf_token %}
+    <div class="field">
+      <label for="id_name">Tag name</label>
+      {{ form.name }}
+    </div>
+
+    <div class="actions">
+      <a href="{% url 'todo:tags-list' %}" class="btn btn-outline">Cancel</a>
+      <button type="submit" class="btn btn-primary">💾 Save</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
